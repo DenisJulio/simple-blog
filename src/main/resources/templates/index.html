@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <title>Home</title>
-</head>
-<body>
-    <h1>All Blog Posts</h1>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  </head>
+  <body>
+    <h1 class="header">Blog Posts</h1>
     <div th:each="post : ${posts}">
+      <div th:onclick="goToPost([[${post.id}]])" class="list">
         <h2 th:text="${post.title}"></h2>
-        <p><strong>Author:</strong> <span th:text="${post.author.name}"></span></p>
+        <p>
+          <strong>Author:</strong> <span th:text="${post.author.name}"></span>
+        </p>
+      </div>
     </div>
-</body>
+    <script th:inline="javascript">
+      function goToPost(id) {
+        window.location.href = "/post/" + id;
+      }
+    </script>
+  </body>
 </html>

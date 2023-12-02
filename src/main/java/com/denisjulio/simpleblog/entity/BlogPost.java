@@ -8,9 +8,9 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class BlogPost {
-    
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String title;
@@ -19,7 +19,7 @@ public class BlogPost {
     public String getTitle() {
         return title;
     }
-    
+
     @ManyToOne
     private Author author;
 

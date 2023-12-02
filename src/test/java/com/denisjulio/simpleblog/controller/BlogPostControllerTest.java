@@ -1,6 +1,8 @@
 package com.denisjulio.simpleblog.controller;
 
 import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -31,11 +33,19 @@ class BlogPostControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void testIndex() throws Exception {
+    void whenGetHomeThenReturnListOfBlogPosts() throws Exception {
         mockMvc.perform(get("/"))
-            .andExpect(status().isOk())
-            .andExpect(view().name("index"))
-            .andExpect(model().attributeExists("posts"))
-            .andExpect(model().attribute("posts", not(empty())));
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"))
+                .andExpect(model().attribute("posts", not(empty())));
+    }
+
+    @Test
+    void whenGetPostByIdWithValidIdThenReturnBlogPost() throws Exception {
+        var postTitle = "First Post";
+        mockMvc.perform(get("/post/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(view().name("blog-post"))
+                .andExpect(model().attribute("post", hasProperty("title", equalTo(postTitle))));
     }
 }

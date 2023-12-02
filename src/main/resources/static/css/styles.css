@@ -1,0 +1,44 @@
+/* styles.css */
+
+body {
+  margin: 20px;
+}
+/* Style the header */
+.header {
+  font-family: Arial, sans-serif;
+  color: black;
+  font-weight: bold; /* Make the font bolder */
+  font-size: 3rem; /* Make the font larger */
+}
+
+/* Style the list of blog posts */
+.list {
+  margin: 0.5rem 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Style the title of each blog post */
+.list h2 {
+  color: black;
+  font-size: 24px;
+}
+
+/* Style the author information */
+.list p {
+  color: #666;
+  font-size: 18px;
+}
+
+/* Style the post container */
+.post {
+  margin: 40px;
+}
+
+/* Style the content of the post */
+.content {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
